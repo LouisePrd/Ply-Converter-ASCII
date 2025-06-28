@@ -1,10 +1,14 @@
 import './App.css';
+import Header from './components/Header';
+import UploadFile from './components/UploadFile';
+import Footer from './components/Footer';
 
 export function App() {
   return (
     <>
-      <h1>Parcel React App</h1>
-      <p>Edit <code>src/App.tsx</code> to get started!</p>
+      <Header />
+      <UploadFile />
+      <Footer />
     </>
   );
 }

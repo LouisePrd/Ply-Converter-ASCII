@@ -1,8 +1,181 @@
+@font-face {
+  font-family: Poppins-SemiBold;
+  src: url(./assets/fonts/Poppins-SemiBold.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: Poppins-LightItalic;
+  src: url(./assets/fonts/Poppins-LightItalic.ttf) format('truetype');
+}
+
 html {
-  color-scheme: light dark;
-  font-family: system-ui;
+  height: 100%;
+  background-color: #000000;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+p,
+input {
+  font-size: 1rem;
+  text-align: center;
+  font-family: Poppins-LightItalic;
+}
+
+#file-input {
+  color: #fffcef;
+}
+
+.viewer-container {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  height: 100%;
+  gap: 20px;
+  align-items: stretch;
+  margin-top: 20px;
+}
+
+.upload-file {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100% - 4rem);
+}
+
+.viewer {
+  flex: 1;
+  width: 700px;
+  min-height: 450px;
+  max-height: 600px;
+  border: 1px solid #ffffff;
+  border-radius: 8px;
+}
+
+.viewer-input {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  background-color: #fffcef;
+  color: #000000;
+  padding: 1rem;
+  height: auto;
+  align-items: center;
+  border-radius: 8px;
+}
+
+.viewer-input input {
+  padding: 0.2rem;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: #000000;
+}
+
+.viewer-input button {
+  color: #fffcef;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.preset-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.preset-button-reset {
+  width: 100%;
+  text-align: center;
+}
+
+.preset-button-reset button {
+  color: #000000;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: underline;
+  background-color: #fffcef;
+}
+
+.basic-rotation-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: fit-content;
+}
+
+.basic-rotation-buttons button {
+  background-color: #000000;
+  color: #fffcef;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.basic-rotation-buttons button:hover {
+  background-color: #333333;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.actions button {
+  border: #fffcef 1px solid;
+  padding: .5rem 1rem;
+  border-radius: 8px;
+  background-color: #000000;
+}
+
+footer,
+footer p {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 1rem;
+  color: #fffcef;
+}
+
+header {
+  color: #FFFCEF;
+  font-size: 1rem;
+  font-family: Poppins-SemiBold;
+  text-align: center;
+  margin-top: 2.5rem;
+}
+
+.viewer-blurred {
+  filter: blur(5px);
+  pointer-events: none;
+  transition: filter 0.3s ease;
+}
+
+#load {
+  color: #fffcef;
+  font-size: 1.2rem;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+a:visited {
+  color: #fffcef;
 }
