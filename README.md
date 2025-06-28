@@ -1,6 +1,5 @@
 # Ply converter to ASCII
-
-Web tool to load point clouds .ply, rotate and export in txt to get ASCII code. It's easier to analyze, process or integrate data into other software or workflows.
+Web application for importing point clouds in .PLY format, applying transformations (rotation, interactive visualization) and exporting data in ASCII (.txt), making them easy to post-process in digital pipelines, analysis tools and customized scripts.
 
  ## TECHNOS
  Three JS, React, TypeScript
