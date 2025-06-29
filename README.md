@@ -4,8 +4,9 @@ Web application for importing point clouds in .PLY format, applying transformati
  ## TECHNOS
  Three JS, React, TypeScript
 
+ ## PREVIEW WIP
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/ac2b6ce5-fea5-4426-b1ab-0e09a3d4054a" alt="Point Cloud" width="600"/><br>
+  <img src="https://github.com/user-attachments/assets/e94c28ab-b3d3-4bea-8da6-81e103c1f84c" alt="Point Cloud" width="600"/><br>
   Point cloud scan by 
   <a href="https://www.linkedin.com/company/prewatch-lab/" target="_blank" rel="noopener noreferrer">@preWatchLab</a>
 </p>
