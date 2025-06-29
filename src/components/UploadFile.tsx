@@ -89,9 +89,9 @@ export default function UploadFile() {
     reader.onload = (event: ProgressEvent<FileReader>) => {
       const contents = event.target?.result;
       if (!contents || typeof contents === "string") {
-      setLoading(false);
-      return;
-    }
+        setLoading(false);
+        return;
+      }
 
       const loader = new PLYLoader();
       const geometry = loader.parse(contents as ArrayBuffer);
@@ -167,48 +167,47 @@ export default function UploadFile() {
 
   return (
     <div className="upload-file">
-  <p>Select a PLY file to view</p>
-  <input
-    id="file-input"
-    type="file"
-    accept=".ply"
-    onChange={(e) => {
-      const selectedFile = e.target.files?.[0];
-      if (selectedFile) {
-        setFile(selectedFile);
-      }
-    }}
-  />
-  {loading && <p id="load">Chargement en cours...</p>}
+      <p>Select a PLY file to view</p>
+      <input
+        id="file-input"
+        type="file"
+        accept=".ply"
+        onChange={(e) => {
+          const selectedFile = e.target.files?.[0];
+          if (selectedFile) {
+            setFile(selectedFile);
+          }
+        }}
+      />
+      {loading && <p id="load">Chargement en cours...</p>}
 
-  <div className="viewer-container">
-    <div
-      className={`viewer ${!file ? "viewer-blurred" : ""}`}
-      ref={mountRef}
-    >
-      {!file && (
-        <p
-          style={{
-            textAlign: "center",
-            paddingTop: "2rem",
-            color: "#fffcef",
-          }}
+      <div className="viewer-container">
+        <div
+          className={`viewer ${!file ? "viewer-blurred" : ""}`}
+          ref={mountRef}
         >
-          Aucun fichier chargé.
-        </p>
-      )}
-    </div>
+          {!file && (
+            <p
+              style={{
+                textAlign: "center",
+                paddingTop: "2rem",
+                color: "#fffcef",
+              }}
+            >
+              Aucun fichier chargé.
+            </p>
+          )}
+        </div>
 
-    <div className= {!file ? "viewer-blurred" : ""}>
-    <RotationControl
-      rotation={rotation}
-      setRotation={setRotation}
-      applyRotation={applyRotation}
-      onExport={exportPLY}
-    />
+        <div className={!file ? "viewer-blurred" : ""}>
+          <RotationControl
+            rotation={rotation}
+            setRotation={setRotation}
+            applyRotation={applyRotation}
+            onExport={exportPLY}
+          />
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-
   );
 }
