@@ -1,5 +1,5 @@
 # Ply to ASCII converter
-Web application for importing point clouds in .PLY format, applying transformations (rotation, interactive visualization) and exporting data in ASCII (.txt), making them easy to post-process in digital pipelines, analysis tools and customized scripts.
+Web application for importing point clouds in .PLY format, applying transformations (rotation, interactive visualization) and exporting data in ASCII (.txt). Easier to post-process in analysis tools and lidar pipeline.
 
  ## TECHNOS
  Three JS, React, TypeScript
