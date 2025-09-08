@@ -23,6 +23,7 @@ export default function RotationControl({
       <p>Rotate your model by input</p>
       <RotationPresets
         setRotation={setRotation}
+        applyRotation={applyRotation}
       />
       <RotationInputs
         rotation={rotation}
