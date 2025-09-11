@@ -7,6 +7,7 @@ export default function UploadFile() {
   const [file, setFile] = useState<File | null>(null);
   const [rotation, setRotation] = useState({ x: 0, y: 0, z: 0 });
   const [loading, setLoading] = useState(false);
+  const [dragging, setDragging] = useState(false);
   const mountRef = useRef<HTMLDivElement | null>(null);
   const objectRef = useRef<THREE.Object3D | null>(null);
 
@@ -47,14 +48,16 @@ export default function UploadFile() {
     const matrix = current.matrixWorld;
     const vertex = new THREE.Vector3();
 
-    // Static values for header : as in CloudCompare
+    // Static values for header
     const offset = { x: 0, y: 0, z: 0 };
     const shift = { x: 0, y: 0, z: 0 };
     const scale = { x: 1, y: 1, z: 1 };
     const source = "K1";
     const epsg = 0;
 
-    const boundingBox = new THREE.Box3().setFromBufferAttribute(position as THREE.BufferAttribute);
+    const boundingBox = new THREE.Box3().setFromBufferAttribute(
+      position as THREE.BufferAttribute
+    );
 
     const min = boundingBox.min;
     const max = boundingBox.max;
@@ -238,21 +241,52 @@ export default function UploadFile() {
     reader.readAsArrayBuffer(file);
   }, [file]);
 
+  const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    setDragging(false);
+    const droppedFile = e.dataTransfer.files[0];
+    if (droppedFile && droppedFile.name.endsWith(".ply")) {
+      setFile(droppedFile);
+    } else {
+      alert("Invalid file type.");
+    }
+  };
+
   return (
     <div className="upload-file">
-      <p>Select a PLY file to view</p>
-      <input
-        id="file-input"
-        type="file"
-        accept=".ply"
-        onChange={(e) => {
-          const selectedFile = e.target.files?.[0];
-          if (selectedFile) {
-            setFile(selectedFile);
-          }
+      <div
+        className={`drop-zone ${dragging ? "dragging" : ""}`}
+        onDragOver={(e) => {
+          e.preventDefault();
+          setDragging(true);
         }}
-      />
-      {loading && <p id="load">Chargement en cours...</p>}
+        onDragLeave={() => setDragging(false)}
+        onDrop={handleDrop}
+      >
+        <p>{dragging ? "Drop your .ply file here" : "Drag and drop a .ply file"}</p>
+        <input
+          type="file"
+          accept=".ply"
+          style={{ display: "none" }}
+          id="file-input"
+          onChange={(e) => {
+            const selectedFile = e.target.files?.[0];
+            if (selectedFile) setFile(selectedFile);
+          }}
+        />
+        <label htmlFor="file-input">
+          or click to select a file
+        </label>
+      </div>
+
+      {/* Nom du fichier sélectionné */}
+      {file && (
+        <p id="file-name">
+          Loaded file : {file.name}
+        </p>
+      )}
+
+      {loading && <p id="load">Loading...</p>}
 
       <div className="viewer-container">
         <div
