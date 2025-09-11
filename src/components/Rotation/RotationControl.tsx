@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import RotationPresets from "./RotationPresets";
 import RotationInputs from "./RotationInputs";
 import RotationActions from "./RotationActions";
@@ -18,18 +18,15 @@ export default function RotationControl({
   applyRotation,
   onExport,
 }: Props) {
+  useEffect(() => {
+    applyRotation();
+  }, [rotation, applyRotation]);
+
   return (
     <div className="viewer-input">
       <p>Rotate your model by input</p>
-      <RotationPresets
-        setRotation={setRotation}
-        applyRotation={applyRotation}
-      />
-      <RotationInputs
-        rotation={rotation}
-        setRotation={setRotation}
-        onEnter={applyRotation}
-      />
+      <RotationPresets setRotation={setRotation} />
+      <RotationInputs rotation={rotation} setRotation={setRotation} onEnter={applyRotation} />
       <RotationActions onRotate={applyRotation} onExport={onExport} />
     </div>
   );

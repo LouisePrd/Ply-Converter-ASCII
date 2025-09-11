@@ -5,12 +5,9 @@ interface Props {
   applyRotation?: () => void;
 }
 
-export default function RotationPresets({ setRotation, applyRotation }: Props) {
+export default function RotationPresets({ setRotation }: Props) {
   const handleRotation = (x: number, y: number, z: number) => {
     setRotation({ x, y, z });
-    if (applyRotation) {
-      setTimeout(() => applyRotation(), 0);
-    }
   };
   return (
     <div className="preset-buttons">
